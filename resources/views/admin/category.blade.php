@@ -18,6 +18,13 @@
         .input_text {
             color: black;
         }
+        .center{
+            margin: auto;
+            text-align: center;
+            width: 50%;
+            margin-top:30px;
+            border: 2px solid white;
+        }
     </style>
 </head>
 
@@ -46,6 +53,20 @@
                             <input type="text" name="category" class="input_text" placeholder="new Category">
                             <input type="submit" name="submit" class="btn btn-primary" value="Add Category">
                         </form>
+                    </div>
+                    <div>
+                        <table class="center">
+                            <tr>
+                                <td>Category Name</td>
+                                <td>Action</td>
+                            </tr>
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{$item->category_name}}</td>
+                                    <td><a onclick="return confirm('Are you need delete this category')" class="btn btn-danger" href="{{url('delete_category',$item->id)}}">Delete</a></td>
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
             </div>

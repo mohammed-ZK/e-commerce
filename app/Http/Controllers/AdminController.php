@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
 
 class AdminController extends Controller
 {
@@ -46,5 +47,9 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back()->with("message","success");
         
+    }
+    public function show_product(){
+        $data = Product::all();
+        return view('admin.show_product',compact('data'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -9,7 +10,8 @@ use App\Models\User;
 class HomeController extends Controller
 {
     public function index(){
-        return view('home.userpage');
+        $data = Product::all();
+        return view('home.userpage',compact('data'));
     }
     public function redirect(){
         $userType = Auth::user()->userType;
